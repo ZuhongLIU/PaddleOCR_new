@@ -129,6 +129,7 @@ def main():
                     info = post_result[0][0] + "\t" + str(post_result[0][1])
 
             if info is not None:
+                #print(info)
                 logger.info("\t result: {}".format(info))
                 fout.write(file + "\t" + info)
     logger.info("success!")

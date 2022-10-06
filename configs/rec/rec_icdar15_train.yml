@@ -1,21 +1,23 @@
 Global:
   use_gpu: true
-  epoch_num: 72
+  epoch_num: 200
   log_smooth_window: 20
   print_batch_step: 10
-  save_model_dir: ./output/rec/ic15/
+  save_model_dir: ./output/rec/my_new_english/
   save_epoch_step: 3
   # evaluation is run every 2000 iterations
   eval_batch_step: [0, 2000]
   cal_metric_during_train: True
-  pretrained_model:
-  checkpoints:
+  #pretrained_model: ./output/rec/my_new/latest 
+  pretrained_model: pretrain_models/rec_mv3_none_bilstm_ctc_v2.0_train/best_accuracy 
+  #checkpoints: ./pretrain_models/rec_mv3_none_bilstm_ctc_v2.0_train/best_accuracy
+  checkpoints: 
   save_inference_dir:
   use_visualdl: False
   infer_img: doc/imgs_words_en/word_10.png
   # for data or label process
-  character_dict_path: ppocr/utils/ic15_dict.txt
-  character_type: ch
+  character_dict_path: ./ppocr/utils/ic15_dict.txt
+  character_type: en
   max_text_length: 25
   infer_mode: False
   use_space_char: False
@@ -60,8 +62,8 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/
-    label_file_list: ["./train_data/train_list.txt"]
+    data_dir: ./train_data/my_data_english/
+    label_file_list: ["./train_data/my_data_english/english_train_label.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
@@ -81,8 +83,8 @@ Train:
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/
-    label_file_list: ["./train_data/val_list.txt"]
+    data_dir: ./train_data/my_data_english
+    label_file_list: ["./train_data/my_data_english/english_test_label.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR

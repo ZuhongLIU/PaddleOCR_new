@@ -298,7 +298,7 @@ class Config:
 
         self.crop = True
         self.affine = False
-        self.reverse = True
+        self.reverse = False
         self.noise = True
         self.jitter = True
         self.blur = True
@@ -379,6 +379,45 @@ def get_warpR(config):
         ret = T1
     return ret, (-r1, -c1), ratio, dst
 
+def chercher_borne(img):
+    h, w,_ = img.shape
+    borne_lower=0
+    borne_upper=0
+    s=w*3*252
+    #L=img[0:0+1,:]
+    #print(L)
+    #print(img[h-0-1:h,:])
+    #print(h)
+    for i in range(h):
+        if np.sum(img[i:i+1,:].all())<s:
+            borne_upper=max(0,i-10)
+            break
+
+    for j in range(h):
+        if np.sum(img[h-j-1:h-j,:])<s:
+            borne_lower = min(h, h-j+ 10)
+            break
+    #print(borne_upper)
+    #print(borne_lower)
+    #if borne_upper==0 and borne_lower==0:
+        #print(1)
+        #cv2.imwrite('./output/images_orig/image.jpg',img)
+    cropimg=img[borne_upper:borne_lower,:]
+    return cropimg
+
+def warpaffine(img,angle):
+    h,w,_=img.shape
+    #print(angle) 
+
+    #print(x,y)
+
+    M=np.array([[np.cos(angle),np.sin(angle),0],[-np.sin(angle),np.cos(angle),abs(w*np.sin(angle))]])
+    img_r=cv2.warpAffine(img,M,(int(w*np.cos(angle)+abs(h*np.sin(angle))),int(h*np.cos(angle)+w*abs(np.sin(angle)))),borderValue=(255,255,255))
+
+    image=chercher_borne(img_r)
+
+    return image
+
 
 def get_warpAffine(config):
     """
@@ -396,6 +435,7 @@ def warp(img, ang, use_tia=True, prob=0.4):
     """
     h, w, _ = img.shape
     config = Config(use_tia=use_tia)
+    #print(config)
     config.make(w, h, ang)
     new_img = img
 
@@ -403,6 +443,9 @@ def warp(img, ang, use_tia=True, prob=0.4):
         img_height, img_width = img.shape[0:2]
         if random.random() <= prob and img_height >= 20 and img_width >= 20:
             new_img = tia_distort(new_img, random.randint(3, 6))
+            #print('#############################')
+            #cv2.imwrite('./output/images_orig/img.jpg',img)
+            #cv2.imwrite('./output/images_new/img.jpg',new_img)
 
     if config.stretch:
         img_height, img_width = img.shape[0:2]
@@ -417,7 +460,16 @@ def warp(img, ang, use_tia=True, prob=0.4):
         img_height, img_width = img.shape[0:2]
         if random.random() <= prob and img_height >= 20 and img_width >= 20:
             new_img = get_crop(new_img)
-
+    if config.affine:
+        img_height, img_width = img.shape[0:2]
+        if random.random() <= prob and img_height >= 20 and img_width >= 20:
+            try:
+                new_img = warpaffine(new_img,random.uniform(-np.pi/15,np.pi/15))
+                #print(new_img)
+                #cv2.imwrite('./output/images_orig/image.jpg',img)
+                #cv2.imwrite('./output/images_new/image.jpg',new_img)
+            except:
+                a=1
     if config.blur:
         if random.random() <= prob:
             new_img = blur(new_img)

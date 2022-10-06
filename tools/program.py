@@ -232,8 +232,10 @@ def train(config,
             # logger and visualdl
             stats = {k: v.numpy().mean() for k, v in loss.items()}
             stats['lr'] = lr
+            #print('######################')
+            #print(preds)
             train_stats.update(stats)
-
+             
             if cal_metric_during_train:  # only rec and cls need
                 batch = [item.numpy() for item in batch]
                 if model_type == 'table':
@@ -242,6 +244,7 @@ def train(config,
                     post_result = post_process_class(preds, batch[1])
                     eval_class(post_result, batch)
                 metric = eval_class.get_metric()
+                #print(post_result)
                 train_stats.update(metric)
 
             if vdl_writer is not None and dist.get_rank() == 0:
@@ -253,6 +256,8 @@ def train(config,
                 (global_step > 0 and global_step % print_batch_step == 0) or
                 (idx >= len(train_dataloader) - 1)):
                 logs = train_stats.log()
+                #print('############################')
+                #print(logs)
                 strs = 'epoch: [{}/{}], iter: {}, {}, reader_cost: {:.5f} s, batch_cost: {:.5f} s, samples: {}, ips: {:.5f}'.format(
                     epoch, epoch_num, global_step, logs, train_reader_cost /
                     print_batch_step, train_batch_cost / print_batch_step,
@@ -351,6 +356,8 @@ def eval(model,
          model_type,
          use_srn=False):
     model.eval()
+    state_dict=model.state_dict()
+    #print(state_dict)
     with paddle.no_grad():
         total_frame = 0.0
         total_time = 0.0
@@ -374,6 +381,7 @@ def eval(model,
                 eval_class(preds, batch)
             else:
                 post_result = post_process_class(preds, batch[1])
+                #print(post_result)
                 eval_class(post_result, batch)
             pbar.update(1)
             total_frame += len(images)

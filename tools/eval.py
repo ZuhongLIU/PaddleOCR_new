@@ -34,6 +34,7 @@ import tools.program as program
 
 def main():
     global_config = config['Global']
+    print(global_config)
     # build dataloader
     valid_dataloader = build_dataloader(config, 'Eval', device, logger)
 
@@ -61,6 +62,8 @@ def main():
         model_type = None
 
     best_model_dict = init_model(config, model)
+    #print(1111111111111111111111111111)
+    #print(best_model_dict)
     if len(best_model_dict):
         logger.info('metric in ckpt ***************')
         for k, v in best_model_dict.items():

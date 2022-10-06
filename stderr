@@ -1,0 +1,96 @@
+###########################
+ch
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 3.733344554901123
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 1.430511474609375e-06
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.035158395767211914
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.0475313663482666
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 1.430511474609375e-06
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.04278731346130371
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.09581494331359863
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.06584024429321289
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.05411839485168457
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 1.1920928955078125e-06
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.03644561767578125
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.03820013999938965
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 0, elapse : 0.03821849822998047
+[2021/08/15 14:11:29] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 0, elapse : 7.152557373046875e-07
+[2021/08/15 14:11:29] root DEBUG: dt_boxes num : 8, elapse : 0.08985376358032227
+[2021/08/15 14:11:29] root DEBUG: cls num  : 8, elapse : 0.03833436965942383
+[2021/08/15 14:11:29] root DEBUG: rec_res num  : 8, elapse : 0.04850935935974121
+[2021/08/15 14:11:29] root INFO: 0  Predict time of /home/zuhong/OCRimage/testOCR.png: 0.199s
+[2021/08/15 14:11:29] root INFO: 其0妇骑702220022, 0.806
+[2021/08/15 14:11:29] root INFO: 公房公奉公一就汴公, 0.808
+[2021/08/15 14:11:29] root INFO: 奉更:奉更，>0, 0.889
+[2021/08/15 14:11:29] root INFO: 房2公路，，07>-公一一计公妇公, 0.804
+[2021/08/15 14:11:29] root INFO: 2计更计计其与, 0.814
+[2021/08/15 14:11:29] root INFO: 汴纳纳加计, 0.643
+[2021/08/15 14:11:29] root INFO: 奉奉计,，骑, 0.909
+[2021/08/15 14:11:29] root INFO: 公公7公, 0.942
+[2021/08/15 14:11:29] root INFO: The visualized image saved in ./inference_results/testOCR.png
+[2021/08/15 14:11:29] root INFO: The predict total time is 0.3510916233062744
+[2021/08/15 14:11:29] root INFO: 
+The predict total time is 0.19940757751464844
+###########################
+ch
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 3.807591438293457
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 1.1920928955078125e-06
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.046704769134521484
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 1.1920928955078125e-06
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.023470401763916016
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 7.152557373046875e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.03056788444519043
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 1.1920928955078125e-06
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.02081918716430664
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 7.152557373046875e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.01796245574951172
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 1.1920928955078125e-06
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.016414165496826172
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.020512819290161133
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.021176576614379883
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 0, elapse : 0.022429943084716797
+[2021/08/15 14:12:11] root DEBUG: cls num  : 0, elapse : 0
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 0, elapse : 9.5367431640625e-07
+[2021/08/15 14:12:11] root DEBUG: dt_boxes num : 8, elapse : 0.042634010314941406
+[2021/08/15 14:12:11] root DEBUG: cls num  : 8, elapse : 0.006932497024536133
+[2021/08/15 14:12:11] root DEBUG: rec_res num  : 8, elapse : 0.025932788848876953
+[2021/08/15 14:12:11] root INFO: 0  Predict time of /home/zuhong/OCRimage/testOCR.png: 0.079s
+[2021/08/15 14:12:11] root INFO: 其0妇骑702220022, 0.806
+[2021/08/15 14:12:11] root INFO: 公房公奉公一就汴公, 0.808
+[2021/08/15 14:12:11] root INFO: 奉更:奉更，>0, 0.889
+[2021/08/15 14:12:11] root INFO: 房2公路，，07>-公一一计公妇公, 0.804
+[2021/08/15 14:12:11] root INFO: 2计更计计其与, 0.814
+[2021/08/15 14:12:11] root INFO: 汴纳纳加计, 0.643
+[2021/08/15 14:12:11] root INFO: 奉奉计,，骑, 0.909
+[2021/08/15 14:12:11] root INFO: 公公7公, 0.942
+[2021/08/15 14:12:12] root INFO: The visualized image saved in ./inference_results/testOCR.png
+[2021/08/15 14:12:12] root INFO: The predict total time is 0.14925503730773926
+[2021/08/15 14:12:12] root INFO: 
+The predict total time is 0.07938766479492188

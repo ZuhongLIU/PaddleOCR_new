@@ -19,6 +19,8 @@ from __future__ import print_function
 import os
 import sys
 
+os.environ['FLAGS_eager_delete_tensor_gb'] = "0.0"
+
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
 sys.path.append(os.path.abspath(os.path.join(__dir__, '..')))
@@ -47,7 +49,7 @@ def main(config, device, logger, vdl_writer):
         dist.init_parallel_env()
 
     global_config = config['Global']
-
+    print(global_config)
     # build dataloader
     train_dataloader = build_dataloader(config, 'Train', device, logger)
     if len(train_dataloader) == 0:
@@ -98,6 +100,10 @@ def main(config, device, logger, vdl_writer):
     eval_class = build_metric(config['Metric'])
     # load pretrain model
     pre_best_model_dict = load_dygraph_params(config, model, logger, optimizer)
+    #print('###############################3')
+    #print(model.state_dict())
+    #print(model)
+    #print(pre_best_model_dict)
     logger.info('train dataloader has {} iters'.format(len(train_dataloader)))
     if valid_dataloader is not None:
         logger.info('valid dataloader has {} iters'.format(

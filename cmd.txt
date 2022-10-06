@@ -1,0 +1,2 @@
+python3 tools/infer/predict_system.py --image_dir="../OCR_testImage/four_words.png" --det_model_dir="./inference/ch_ppocr_mobile_v2.0_det_infer/"  --rec_model_dir="./inference/rec_infer/" --cls_model_dir=./inference/ch_ppocr_mobile_v2.0_cls_infer/ --use_angle_cls=True --use_space_char=True
+./inference_results/four_words.png

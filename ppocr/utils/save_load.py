@@ -54,6 +54,7 @@ def init_model(config, model, optimizer=None, lr_scheduler=None):
     pretrained_model = global_config.get('pretrained_model')
     best_model_dict = {}
     if checkpoints:
+        #print(111111111111111111111111111)
         assert os.path.exists(checkpoints + ".pdparams"), \
             "Given dir {}.pdparams not exist.".format(checkpoints)
         assert os.path.exists(checkpoints + ".pdopt"), \
@@ -73,6 +74,7 @@ def init_model(config, model, optimizer=None, lr_scheduler=None):
                 best_model_dict['start_epoch'] = states_dict['epoch'] + 1
         logger.info("resume from {}".format(checkpoints))
     elif pretrained_model:
+        #print(22222222222222222222222)
         if not isinstance(pretrained_model, list):
             pretrained_model = [pretrained_model]
         for pretrained in pretrained_model:
@@ -80,7 +82,10 @@ def init_model(config, model, optimizer=None, lr_scheduler=None):
                     os.path.exists(pretrained + '.pdparams')):
                 raise ValueError("Model pretrain path {} does not "
                                  "exists.".format(pretrained))
+            #print('##########################')
+            #print(pretrained+'.pdparams')
             param_state_dict = paddle.load(pretrained + '.pdparams')
+            #print(param_state_dict)
             model.set_state_dict(param_state_dict)
             logger.info("load pretrained model from {}".format(
                 pretrained_model))
@@ -103,7 +108,11 @@ def load_dygraph_params(config, model, logger, optimizer):
             return {}
         pm = pm if pm.endswith('.pdparams') else pm + '.pdparams'
         params = paddle.load(pm)
+        print('######################')
+        print(pm)
+        #print(params)
         state_dict = model.state_dict()
+        #print(state_dict)
         new_state_dict = {}
         for k1, k2 in zip(state_dict.keys(), params.keys()):
             if list(state_dict[k1].shape) == list(params[k2].shape):
@@ -112,7 +121,8 @@ def load_dygraph_params(config, model, logger, optimizer):
             logger.info(
                 f"The shape of model params {k1} {state_dict[k1].shape} not matched with loaded params {k2} {params[k2].shape} !"
             )
-        model.set_state_dict(new_state_dict)
+        
+        model.set_state_dict(params)
         logger.info(f"loaded pretrained_model successful from {pm}")
         return {}
 

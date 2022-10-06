@@ -1,16 +1,18 @@
 Global:
   use_gpu: True
-  epoch_num: 500
+  epoch_num: 40
   log_smooth_window: 20
   print_batch_step: 10
-  save_model_dir: ./output/rec_en_number_lite
+  save_model_dir: ./output/my_rec_en_number_lite_test
   save_epoch_step: 3
   # evaluation is run every 5000 iterations after the 4000th iteration
   eval_batch_step: [0, 2000]
   # if pretrained_model is saved in static mode, load_static_weights must set to True
   cal_metric_during_train: True
-  pretrained_model:
-  checkpoints: 
+  #pretrained_model: ./pretrain_models/en_number_mobile_v2.0_rec_train/best_accuracy
+  pretrained_model: ./output/my_rec_en_number_lite/latest
+  #checkpoints: ./output/rec_en_number_lite_pretrain/latest 
+  checkpoints:
   save_inference_dir:
   use_visualdl: False
   infer_img:
@@ -63,13 +65,14 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/
-    label_file_list: ["./train_data/train_list.txt"]
+    #data_dir: ./train_data/Datasets/IAM/words/h32char16to17/tr_removePunc
+    data_dir: ./train_data/my_data_english
+    label_file_list: ["./train_data/my_data_english/english_train_label.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
           channel_first: False
-      - RecAug: 
+      - RecAug:  
       - CTCLabelEncode: # Class handling label
       - RecResizeImg:
           image_shape: [3, 32, 320]
@@ -84,8 +87,8 @@ Train:
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: ./train_data/
-    label_file_list: ["./train_data/eval_list.txt"]
+    data_dir: ./train_data/my_data_english
+    label_file_list: ["./train_data/my_data_english/english_test_label.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR

@@ -106,12 +106,21 @@ class TextClassifier(object):
             self.predictor.try_shrink_memory()
             cls_result = self.postprocess_op(prob_out)
             elapse += time.time() - starttime
+            #print(cls_result)
+            #print('###################')
+            self.cls_thresh=1
             for rno in range(len(cls_result)):
                 label, score = cls_result[rno]
                 cls_res[indices[beg_img_no + rno]] = [label, score]
+                #print('########################')
+                #print(label)
                 if '180' in label and score > self.cls_thresh:
+                    #cv2.imwrite('./output/images_orig/img'+str(indices[beg_img_no+rno])+'.jpg',img_list[indices[beg_img_no+rno]])
+                    #print('./output/images_orig/img'+str(indices[beg_img_no+rno])+'.jpg')
                     img_list[indices[beg_img_no + rno]] = cv2.rotate(
                         img_list[indices[beg_img_no + rno]], 1)
+                    #cv2.imwrite('./output/images_new/img'+str(indices[beg_img_no+rno])+'.jpg',img_list[indices[beg_img_no+rno]])
+                    #print('./output/images_new/img'+str(indices[beg_img_no+rno])+'.jpg')
         return img_list, cls_res, elapse
 
 

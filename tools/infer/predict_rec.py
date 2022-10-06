@@ -268,10 +268,14 @@ class TextRecognizer(object):
 
 def main(args):
     image_file_list = get_image_file_list(args.image_dir)
+    #print(image_file_list)
     text_recognizer = TextRecognizer(args)
     valid_image_file_list = []
     img_list = []
-
+    
+    #print(args.rec_model_dir)
+    #print(111111111111)
+    print(type(args))
     # warmup 10 times
     if args.warmup:
         img = np.random.uniform(0, 255, [32, 320, 3]).astype(np.uint8)
@@ -281,7 +285,14 @@ def main(args):
     for image_file in image_file_list:
         img, flag = check_and_read_gif(image_file)
         if not flag:
+            print(image_file)
             img = cv2.imread(image_file)
+            #print('###########')
+            h,w,_=img.shape
+            #print(img.shape)
+            if w>600:
+                args.rec_model_dir='./inference/rec_infer_french_lines/'
+                text_recognizer=TextRecognizer(args)
         if img is None:
             logger.info("error in loading image:{}".format(image_file))
             continue
@@ -289,14 +300,16 @@ def main(args):
         img_list.append(img)
     try:
         rec_res, _ = text_recognizer(img_list)
+        print('##########################')
+        print(rec_res)
 
     except Exception as E:
         logger.info(traceback.format_exc())
         logger.info(E)
         exit()
     for ino in range(len(img_list)):
-        logger.info("Predicts of {}:{}".format(valid_image_file_list[ino],
-                                               rec_res[ino]))
+        #print(rec_res[ino])
+        logger.info("result: {}\t{}".format(rec_res[ino][0],rec_res[ino][1]))
     if args.benchmark:
         text_recognizer.autolog.report()
 

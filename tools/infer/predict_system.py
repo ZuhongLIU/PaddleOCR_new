@@ -52,7 +52,7 @@ class TextSystem(object):
     def print_draw_crop_rec_res(self, img_crop_list, rec_res):
         bbox_num = len(img_crop_list)
         for bno in range(bbox_num):
-            cv2.imwrite("./output/img_crop_%d.jpg" % bno, img_crop_list[bno])
+            cv2.imwrite("./output/images/img_crop_%d.jpg" % bno, img_crop_list[bno])
             logger.info(bno, rec_res[bno])
 
     def __call__(self, img, cls=True):
@@ -76,11 +76,11 @@ class TextSystem(object):
                 img_crop_list)
             logger.debug("cls num  : {}, elapse : {}".format(
                 len(img_crop_list), elapse))
-
+        
         rec_res, elapse = self.text_recognizer(img_crop_list)
         logger.debug("rec_res num  : {}, elapse : {}".format(
             len(rec_res), elapse))
-        # self.print_draw_crop_rec_res(img_crop_list, rec_res)
+        self.print_draw_crop_rec_res(img_crop_list, rec_res)
         filter_boxes, filter_rec_res = [], []
         for box, rec_reuslt in zip(dt_boxes, rec_res):
             text, score = rec_reuslt
@@ -177,6 +177,7 @@ def main(args):
 
 if __name__ == "__main__":
     args = utility.parse_args()
+    print(args)
     if args.use_mp:
         p_list = []
         total_process_num = args.total_process_num

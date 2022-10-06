@@ -22,8 +22,11 @@ class BaseRecLabelDecode(object):
 
     def __init__(self,
                  character_dict_path=None,
-                 character_type='ch',
+                 character_type='en',
                  use_space_char=False):
+        #character_type='french'
+        #print('###########################')
+        #print(character_type)
         support_character_type = [
             'ch', 'en', 'EN_symbol', 'french', 'german', 'japan', 'korean',
             'it', 'xi', 'pu', 'ru', 'ar', 'ta', 'ug', 'fa', 'ur', 'rs', 'oc',
@@ -32,7 +35,7 @@ class BaseRecLabelDecode(object):
         ]
         assert character_type in support_character_type, "Only {} are supported now but get {}".format(
             support_character_type, character_type)
-
+        
         self.beg_str = "sos"
         self.end_str = "eos"
 
@@ -43,10 +46,14 @@ class BaseRecLabelDecode(object):
             # same with ASTER setting (use 94 char).
             self.character_str = string.printable[:-6]
             dict_character = list(self.character_str)
+        #print(dict_character)
         elif character_type in support_character_type:
             self.character_str = []
             assert character_dict_path is not None, "character_dict_path should not be None when character_type is {}".format(
                 character_type)
+            #print('#######################')
+            #print(character_dict_path)
+            #character_dict_path='./ppocr/utils/dict/french_dict.txt'
             with open(character_dict_path, "rb") as fin:
                 lines = fin.readlines()
                 for line in lines:
@@ -70,11 +77,14 @@ class BaseRecLabelDecode(object):
 
     def decode(self, text_index, text_prob=None, is_remove_duplicate=False):
         """ convert text-index into text-label. """
+        #print(self.character_type)
         result_list = []
         ignored_tokens = self.get_ignored_tokens()
         batch_size = len(text_index)
+        #print('#########################')
+        #print(self.character)
         for batch_idx in range(batch_size):
-            char_list = []
+            char_list= []
             conf_list = []
             for idx in range(len(text_index[batch_idx])):
                 if text_index[batch_idx][idx] in ignored_tokens:
@@ -84,6 +94,15 @@ class BaseRecLabelDecode(object):
                     if idx > 0 and text_index[batch_idx][idx - 1] == text_index[
                             batch_idx][idx]:
                         continue
+                #print('text_index:',len(text_index))
+                #print('##########################')
+                #print(self.character)
+                #print(text_index[batch_idx][idx])
+                #print(len(self.character))
+                #print(self.character[-1])
+                #print(self.character[int(text_index[batch_idx][idx])])
+                #print('#######################')
+                #print('batch_idx:',batch_idx)
                 char_list.append(self.character[int(text_index[batch_idx][
                     idx])])
                 if text_prob is not None:

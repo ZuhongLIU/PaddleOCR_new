@@ -1,0 +1,8 @@
+cd /home/zuhong/PaddleOCR_new
+pwd
+conda activate zuhong
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:/home/zuhong/.conda/envs/DLC-GPU/lib:/home/zuhong/.conda/envs/zuhong/lib:
+/opt/anaconda3/bin/python3 ./tools/infer_rec.py -c configs/rec/multi_language/rec_french_lite_train.yml -o Global.pretrained_model=output/rec_french_lite/latest  Global.load_static_weights=true Global.infer_img=../OCR_testImage/ocr.jpg > a.log
+cat a.log |  grep result | awk '{print $6}' > ocr.txt
+
+

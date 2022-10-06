@@ -62,6 +62,7 @@ class SimpleDataSet(Dataset):
                     lines = random.sample(lines,
                                           round(len(lines) * ratio_list[idx]))
                 data_lines.extend(lines)
+        #print('data_lines:',data_lines)
         return data_lines
 
     def shuffle_data_random(self):

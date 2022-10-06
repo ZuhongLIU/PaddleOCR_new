@@ -1,0 +1,2 @@
+pwd
+conda activate zuhong/

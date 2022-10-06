@@ -38,6 +38,8 @@ def transform(data, ops=None):
     if ops is None:
         ops = []
     for op in ops:
+        #print(op)
+        #print('###########################')
         data = op(data)
         if data is None:
             return None
@@ -51,15 +53,22 @@ def create_operators(op_param_list, global_config=None):
     Args:
         params(list): a dict list, used to create some operators
     """
+    
     assert isinstance(op_param_list, list), ('operator config should be a list')
     ops = []
+    #print('#####################')
+    #print(global_config)
     for operator in op_param_list:
         assert isinstance(operator,
                           dict) and len(operator) == 1, "yaml format error"
         op_name = list(operator)[0]
+        #print('###############')
+        #print(op_name)
         param = {} if operator[op_name] is None else operator[op_name]
+        #print(param)
         if global_config is not None:
             param.update(global_config)
         op = eval(op_name)(**param)
         ops.append(op)
+    #print(ops)
     return ops
